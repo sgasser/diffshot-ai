@@ -41,7 +41,6 @@ jobs:
       - name: Check formatting
         run: npm run format:check
       
-      # Tests will be added here when available
-      # - name: Run tests
-      #   run: npm test
+      - name: Run tests
+        run: npm test -- run
 
