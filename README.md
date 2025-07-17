@@ -3,11 +3,15 @@
 [![npm version](https://img.shields.io/npm/v/diffshot-ai.svg)](https://www.npmjs.com/package/diffshot-ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+> ⚠️ **EXPERIMENTAL**: This is an early, experimental version. Features and behavior may change significantly between releases.
+
 > AI-powered screenshot generation for code changes
 
 ## What it does
 
 DiffShot uses Claude AI to analyze your code changes and automatically capture screenshots showing how your UI looks across different viewports, themes, and languages. See the visual impact of every code change instantly.
+
+![DiffShot Terminal Output](docs/assets/diffshot-terminal-output.png)
 
 ```bash
 # You change a component

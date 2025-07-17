@@ -74,7 +74,6 @@ export async function initDiffShot(workDir: string = process.cwd()): Promise<Ini
       options: {
         cwd: workDir,
         permissionMode: 'bypassPermissions',
-        allowedTools: [],
       },
     })) {
       messageCount++;
