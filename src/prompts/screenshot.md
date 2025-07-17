@@ -48,14 +48,18 @@ Screenshot capture tool path: {{captureScriptPath}}
    - --selector <selector>: CSS selector to scroll to before screenshot (will scroll element into view)
    - --click <selector>: Click an element before screenshot
    - --viewport <width>: Viewport width (use sizes from DIFFSHOT.md)
-   - --viewport-height <height>: Viewport height (use if specified in DIFFSHOT.md)
+   - --viewport-height <height>: Viewport height (use if specified in DIFFSHOT.md, use "full" for full page screenshots)
    - --wait <ms>: Wait time after navigation
    - --auth-cookie <cookie>: Authentication cookie (check DIFFSHOT.md)
    - --auth-state <path>: Path to auth state JSON file (check DIFFSHOT.md)
    - --dark-mode: Enable dark mode (sets prefers-color-scheme: dark)
    
-   The tool captures only the viewport (what users see without scrolling).
+   The tool captures only the viewport (what users see without scrolling) unless using --viewport-height "full".
    Use ONLY the viewport sizes specified in DIFFSHOT.md.
+   
+   When viewport configurations specify "full" as the height:
+   - Pass "full" as the --viewport-height value (not a number)
+   - This captures the entire page height instead of just the viewport
    
    Capture screenshots for each viewport, theme, and language specified in DIFFSHOT.md.
    Use --dark-mode flag for dark theme screenshots.

@@ -9,7 +9,7 @@
  *   --route <path>           Route path to append to base URL (e.g., /about, /contact)
  *   --selector <selector>    CSS selector to scroll to before screenshot
  *   --viewport <width>       Viewport width (default: 1440)
- *   --viewport-height <height> Viewport height (optional, defaults based on width)
+ *   --viewport-height <height> Viewport height (optional, defaults based on width, use "full" for full page)
  *   --wait <ms>              Wait time after navigation (default: 2000)
  *   --auth-cookie <cookie>   Authentication cookie string
  *   --auth-state <path>      Path to auth state JSON file (recommended for OAuth/SSO)
@@ -47,7 +47,8 @@ function parseArgs(args) {
         options.viewportWidth = parseInt(args[++i]) || 1440;
         break;
       case '--viewport-height':
-        options.viewportHeight = parseInt(args[++i]) || null;
+        const heightArg = args[++i];
+        options.viewportHeight = heightArg === 'full' ? 'full' : (parseInt(heightArg) || null);
         break;
       case '--wait':
         options.waitTime = parseInt(args[++i]) || 2000;
@@ -79,7 +80,7 @@ async function captureScreenshot() {
     console.error('  --route <path>           Route path to append to base URL');
     console.error('  --selector <selector>    CSS selector to scroll to before screenshot');
     console.error('  --viewport <width>       Viewport width (default: 1440)');
-    console.error('  --viewport-height <height> Viewport height (optional, defaults based on width)');
+    console.error('  --viewport-height <height> Viewport height (optional, defaults based on width, use "full" for full page)');
     console.error('  --wait <ms>              Wait time after navigation (default: 2000)');
     console.error('  --auth-cookie <cookie>   Authentication cookie string');
     console.error('  --auth-state <path>      Path to auth state JSON file');
@@ -90,10 +91,14 @@ async function captureScreenshot() {
 
   const options = parseArgs(args);
   const fullUrl = options.url + options.route;
+  const isFullPage = options.viewportHeight === 'full';
   
   console.log(`Capturing screenshot of: ${fullUrl}`);
   if (options.selector) {
     console.log(`Will scroll to selector: ${options.selector}`);
+  }
+  if (isFullPage) {
+    console.log('Full page screenshot mode enabled');
   }
   
   // Launch browser
@@ -105,7 +110,7 @@ async function captureScreenshot() {
   try {
     // Use provided height or set default based on width
     let viewportHeight = options.viewportHeight;
-    if (!viewportHeight) {
+    if (!viewportHeight || viewportHeight === 'full') {
       // Default heights based on common device sizes
       if (options.viewportWidth <= 375) {
         viewportHeight = 812; // mobile (iPhone X/11/12)
@@ -187,10 +192,10 @@ async function captureScreenshot() {
       }
     }
     
-    // Take screenshot (viewport only)
+    // Take screenshot (full page if requested, viewport otherwise)
     const screenshotOptions = {
       path: options.outputFile,
-      fullPage: false
+      fullPage: isFullPage
     };
     
     // If selector is specified, optionally capture just the element
