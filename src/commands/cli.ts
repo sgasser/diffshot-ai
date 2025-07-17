@@ -6,7 +6,7 @@ import { setupAuth } from './setup-auth.js';
 import { runConfig } from './config.js';
 import { CLIOptions } from '../types/index.js';
 import { CONFIG, ANSI_COLORS as colors } from '../config/index.js';
-import { logger, getChangedFiles, configExists } from '../utils/index.js';
+import { logger, getChangedFiles, configExists, checkForUpdates } from '../utils/index.js';
 
 /**
  * CLI entry point for DiffShot
@@ -66,6 +66,7 @@ Options:
   --branch <ref>          Git reference to compare against (default: detects current uncommitted changes)
   --dry-run               Show what would be done without actually doing it
   --verbose, -v           Enable verbose output for debugging
+  --skip-update-check     Skip checking for updates
   --help, -h              Show this help message
 
 Examples:
@@ -203,6 +204,7 @@ Common Issues:
     logger.info('  diffshot-ai --branch main');
     logger.info('  diffshot-ai --branch HEAD~3');
     process.chdir(originalDir);
+    await checkForUpdates();
     process.exit(0);
   }
 
@@ -212,6 +214,7 @@ Common Issues:
     changedFiles.forEach((f) => logger.info(`  - ${f}`));
     logger.info('\nRun without --dry-run to generate screenshots');
     process.chdir(originalDir);
+    await checkForUpdates();
     process.exit(0);
   }
 
@@ -249,6 +252,8 @@ Common Issues:
           logger.info('━'.repeat(60));
         }
       }
+
+      await checkForUpdates();
     } else {
       logger.error('\nScreenshot generation failed');
       if (result.error) {

@@ -8,3 +8,4 @@ export * from './validation.js';
 export * from './prompt-loader.js';
 export * from './config-manager.js';
 export * from './prompt.js';
+export * from './update-checker.js';
