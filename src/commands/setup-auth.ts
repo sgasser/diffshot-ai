@@ -1,7 +1,6 @@
 import { query } from '@anthropic-ai/claude-code';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import 'dotenv/config';
 
 import { CONFIG, ENV_VARS } from '../config/index.js';
 import {
@@ -11,6 +10,7 @@ import {
   readFile,
   fileExists,
   loadPromptTemplate,
+  configManager,
 } from '../utils/index.js';
 
 interface SetupAuthResult {
@@ -27,15 +27,24 @@ export async function setupAuth(
   workDir: string = process.cwd(),
   credentials?: string
 ): Promise<SetupAuthResult> {
-  if (!process.env[ENV_VARS.API_KEY] && !process.env.CLAUDE_CODE_OAUTH_TOKEN) {
+  // Check global config for authentication
+  const apiKey = await configManager.getApiKey();
+  const claudeToken = await configManager.getClaudeCodeToken();
+
+  if (!apiKey && !claudeToken) {
     logger.header('DiffShot Auth Setup');
-    logger.error('No API authentication found');
-    logger.info('\nYou need to set one of these environment variables:');
-    logger.info('\nOption 1: Anthropic API Key (from https://console.anthropic.com/)');
-    logger.info(`  export ${ENV_VARS.API_KEY}=sk-ant-api...\n`);
-    logger.info('Option 2: Claude Code OAuth Token');
-    logger.info('  export CLAUDE_CODE_OAUTH_TOKEN=sk-ant-oat...');
+    logger.error('No authentication found');
+    logger.info('\nPlease run the init command to set up authentication:');
+    logger.info('  diffshot init');
     return { success: false };
+  }
+
+  // Set environment variables for this session
+  if (apiKey) {
+    process.env[ENV_VARS.API_KEY] = apiKey;
+  }
+  if (claudeToken) {
+    process.env.CLAUDE_CODE_OAUTH_TOKEN = claudeToken;
   }
 
   logger.header('DiffShot Auth Setup');

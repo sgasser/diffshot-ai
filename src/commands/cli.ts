@@ -1,9 +1,9 @@
-import 'dotenv/config';
 import path from 'path';
 import ora from 'ora';
 import { runDiffShot } from '../services/index.js';
 import { initDiffShot } from './init.js';
 import { setupAuth } from './setup-auth.js';
+import { runConfig } from './config.js';
 import { CLIOptions } from '../types/index.js';
 import { CONFIG, ANSI_COLORS as colors } from '../config/index.js';
 import { logger, getChangedFiles, configExists } from '../utils/index.js';
@@ -18,6 +18,11 @@ async function runCLI(): Promise<void> {
   if (args[0] === 'init') {
     const initDir = args[1] ? path.resolve(args[1]) : process.cwd();
     const result = await initDiffShot(initDir);
+    process.exit(result.success ? 0 : 1);
+  }
+
+  if (args[0] === 'config') {
+    const result = await runConfig(args.slice(1));
     process.exit(result.success ? 0 : 1);
   }
 
@@ -54,7 +59,8 @@ Usage: diffshot-ai [path] [options]
 
 Commands:
   init [path]                        Initialize DiffShot configuration
-  setup-auth "<credentials>" [path]  Set up authentication with provided credentials
+  config <subcommand>                Manage DiffShot API key configuration
+  setup-auth "<credentials>" [path]  Set up app authentication with provided credentials
 
 Options:
   --branch <ref>          Git reference to compare against (default: detects current uncommitted changes)

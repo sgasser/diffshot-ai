@@ -12,6 +12,7 @@ DiffShot is a screenshot generation tool that analyzes code changes and automati
 - `npm run build` - Compile TypeScript to JavaScript
 - `npm run dev` - Run in development mode with tsx (no build needed)
 - `npm run dev:init` - Run init command in development mode
+- `npm run dev:config` - Run config command in development mode
 
 ### Code Quality
 - `npm run typecheck` - Run TypeScript type checking
@@ -70,7 +71,7 @@ The codebase follows a modular architecture with clear separation of concerns:
 ## Environment Setup
 
 - Requires Node.js >= 18.0.0
-- Must have `ANTHROPIC_API_KEY` environment variable set
+- Must have API key configured via `diffshot config set apiKey`
 - Project must be a Git repository for change detection
 
 ## Key Files to Understand

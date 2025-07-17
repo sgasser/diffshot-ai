@@ -24,7 +24,7 @@ export const ENV_VARS = {
 
 export const MESSAGES = {
   ERRORS: {
-    NO_API_KEY: 'ANTHROPIC_API_KEY environment variable is required',
+    NO_API_KEY: 'API key not configured. Run "diffshot config" first.',
     NO_CONFIG: 'DIFFSHOT.md not found. Run "diffshot-ai init" first.',
     NOT_WEB_APP: 'This does not appear to be a web application',
     GIT_DIFF_FAILED: 'Failed to get git diff',

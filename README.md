@@ -36,9 +36,11 @@ npm install -g diffshot-ai
 ### 1. Set your API key
 
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-api...
-# or
-export CLAUDE_CODE_OAUTH_TOKEN=sk-ant-oat...
+# Interactive configuration (recommended)
+diffshot config
+
+# Or set directly (for automation)
+diffshot config apiKey sk-ant-api...
 ```
 
 ### 2. Initialize (one-time setup)
@@ -105,10 +107,15 @@ This creates a custom auth script that runs before each screenshot.
 ## CLI Reference
 
 ```bash
+# Configure API key
+diffshot config              # Interactive mode (recommended)
+diffshot config apiKey <key> # Set API key directly (for CI/CD)
+diffshot config --clear      # Clear all configuration
+
 # Initialize project
 diffshot-ai init [path]
 
-# Set up authentication
+# Set up app authentication
 diffshot-ai setup-auth "<credentials>" [path]
 
 # Generate screenshots
@@ -145,13 +152,14 @@ diffshot-ai ../other-project --branch develop
 - Node.js ≥ 18
 - Git repository
 - Web app with dev server
-- Anthropic API key or Claude Code OAuth token
+- Anthropic API key or Claude Code OAuth token (configured via `diffshot config`)
 
 ## Troubleshooting
 
 **"No authentication found"**
 ```bash
-echo "ANTHROPIC_API_KEY=sk-ant-api..." >> .env
+# Run interactive configuration
+diffshot config
 ```
 
 **"DIFFSHOT.md not found"**

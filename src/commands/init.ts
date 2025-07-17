@@ -1,7 +1,6 @@
 import { query } from '@anthropic-ai/claude-code';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import 'dotenv/config';
 
 import { InitResult } from '../types/index.js';
 import { CONFIG, ENV_VARS } from '../config/index.js';
@@ -14,6 +13,7 @@ import {
   validateDiffShotConfig,
   displayValidationResult,
   loadPromptTemplate,
+  configManager,
 } from '../utils/index.js';
 
 /**
@@ -21,15 +21,24 @@ import {
  */
 
 export async function initDiffShot(workDir: string = process.cwd()): Promise<InitResult> {
-  if (!process.env[ENV_VARS.API_KEY] && !process.env.CLAUDE_CODE_OAUTH_TOKEN) {
+  // Check for existing API keys in global config
+  const apiKey = await configManager.getApiKey();
+  const claudeToken = await configManager.getClaudeCodeToken();
+
+  if (!apiKey && !claudeToken) {
     logger.header('DiffShot Init');
     logger.error('No authentication found');
-    logger.info('\nYou need to set one of these environment variables:');
-    logger.info('\nOption 1: Anthropic API Key (from https://console.anthropic.com/)');
-    logger.info(`  export ${ENV_VARS.API_KEY}=sk-ant-api...\n`);
-    logger.info('Option 2: Claude Code OAuth Token');
-    logger.info('  export CLAUDE_CODE_OAUTH_TOKEN=sk-ant-oat...');
+    logger.info('\nBefore initializing your project, please configure your API key:');
+    logger.info('  diffshot config');
     return { success: false };
+  }
+
+  // Set environment variables for this session
+  if (apiKey) {
+    process.env[ENV_VARS.API_KEY] = apiKey;
+  }
+  if (claudeToken) {
+    process.env.CLAUDE_CODE_OAUTH_TOKEN = claudeToken;
   }
 
   logger.header('DiffShot Init');
@@ -140,7 +149,8 @@ export async function initDiffShot(workDir: string = process.cwd()): Promise<Ini
       logger.info('\nPlease check:');
       logger.info('  1. Your API key/token is correct and not expired');
       logger.info('  2. You have access to the Claude API');
-      logger.info('\nCurrent authentication source: Check your .env file or environment variables');
+      logger.info('\nPlease check your authentication:');
+      logger.info('  diffshot config');
     } else if (errorMessage.includes('No messages received')) {
       logger.error('Failed to communicate with Claude API');
       logger.info('\nThis might be due to network issues or invalid credentials.');

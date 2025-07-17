@@ -24,9 +24,9 @@ We take security seriously. If you discover a security vulnerability, please fol
 When using DiffShot:
 
 ### API Keys
-- Store your `ANTHROPIC_API_KEY` in environment variables
-- Never commit `.env` files to version control
-- Use `.env.example` as a template
+- Configure your API key using `diffshot config set apiKey`
+- Keys are stored securely in your home directory config
+- Never share your config file or commit API keys to version control
 
 ### Authentication Scripts
 - Store authentication scripts in `.diffshot/auth/` 

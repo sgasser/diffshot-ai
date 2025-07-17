@@ -6,3 +6,5 @@ export * from './logger.js';
 export * from './markdown.js';
 export * from './validation.js';
 export * from './prompt-loader.js';
+export * from './config-manager.js';
+export * from './prompt.js';

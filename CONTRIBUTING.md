@@ -24,10 +24,10 @@ Thank you for your interest in contributing to DiffShot! This document provides 
    npm install
    ```
 
-3. Set up your environment:
+3. Set up your API key:
    ```bash
-   cp .env.example .env
-   # Edit .env and add your ANTHROPIC_API_KEY
+   # Configure your API key (interactive)
+   npm run dev:config
    ```
 
 4. Build the TypeScript code:

@@ -1,6 +1,6 @@
 {
   "name": "diffshot-ai",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "AI-powered screenshot generation that automatically captures relevant UI based on code changes",
   "type": "module",
   "main": "dist/index.js",
@@ -12,6 +12,7 @@
     "build": "tsc",
     "dev": "tsx src/commands/cli.ts",
     "dev:init": "tsx src/commands/cli.ts init",
+    "dev:config": "tsx src/commands/cli.ts config",
     "dev:setup-auth": "tsx src/commands/cli.ts setup-auth",
     "typecheck": "tsc --noEmit",
     "lint": "eslint 'src/**/*.ts'",
@@ -57,12 +58,10 @@
   "license": "MIT",
   "dependencies": {
     "@anthropic-ai/claude-code": "^1.0.44",
-    "dotenv": "^16.0.0",
     "ora": "^8.2.0",
     "playwright": "^1.48.0"
   },
   "devDependencies": {
-    "@types/dotenv": "^6.1.1",
     "@types/node": "^24.0.13",
     "@typescript-eslint/eslint-plugin": "^8.37.0",
     "@typescript-eslint/parser": "^8.37.0",

@@ -3,9 +3,6 @@ dist/
 screenshots/
 difflens-output/
 test/output/
-.env
-.env.*
-!.env.example
 *.log
 .DS_Store
 playwright-report/
