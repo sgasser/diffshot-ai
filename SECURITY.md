@@ -24,7 +24,7 @@ We take security seriously. If you discover a security vulnerability, please fol
 When using DiffShot:
 
 ### API Keys
-- Configure your API key using `diffshot config set apiKey`
+- Configure your API key using `diffshot-ai config set apiKey`
 - Keys are stored securely in your home directory config
 - Never share your config file or commit API keys to version control
 

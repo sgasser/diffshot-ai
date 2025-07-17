@@ -29,7 +29,7 @@ export async function initDiffShot(workDir: string = process.cwd()): Promise<Ini
     logger.header('DiffShot Init');
     logger.error('No authentication found');
     logger.info('\nBefore initializing your project, please configure your API key:');
-    logger.info('  diffshot config');
+    logger.info('  diffshot-ai config');
     return { success: false };
   }
 
@@ -150,7 +150,7 @@ export async function initDiffShot(workDir: string = process.cwd()): Promise<Ini
       logger.info('  1. Your API key/token is correct and not expired');
       logger.info('  2. You have access to the Claude API');
       logger.info('\nPlease check your authentication:');
-      logger.info('  diffshot config');
+      logger.info('  diffshot-ai config');
     } else if (errorMessage.includes('No messages received')) {
       logger.error('Failed to communicate with Claude API');
       logger.info('\nThis might be due to network issues or invalid credentials.');

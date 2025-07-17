@@ -71,7 +71,7 @@ The codebase follows a modular architecture with clear separation of concerns:
 ## Environment Setup
 
 - Requires Node.js >= 18.0.0
-- Must have API key configured via `diffshot config set apiKey`
+- Must have API key configured via `diffshot-ai config set apiKey`
 - Project must be a Git repository for change detection
 
 ## Key Files to Understand

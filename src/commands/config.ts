@@ -39,7 +39,7 @@ function showHelp(): void {
   console.log(`
 DiffShot Config - Manage DiffShot configuration
 
-Usage: diffshot config [options]
+Usage: diffshot-ai config [options]
 
 Options:
   (none)              Interactive configuration mode
@@ -48,9 +48,9 @@ Options:
   --help, -h          Show this help message
 
 Examples:
-  diffshot config                    # Interactive mode (recommended)
-  diffshot config apiKey sk-ant-...  # Set API key directly
-  diffshot config --clear            # Clear all configuration
+  diffshot-ai config                    # Interactive mode (recommended)
+  diffshot-ai config apiKey sk-ant-...  # Set API key directly
+  diffshot-ai config --clear            # Clear all configuration
 
 The interactive mode allows you to:
   - Set Anthropic API Key or Claude Code OAuth Token

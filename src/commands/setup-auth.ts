@@ -35,7 +35,7 @@ export async function setupAuth(
     logger.header('DiffShot Auth Setup');
     logger.error('No authentication found');
     logger.info('\nPlease run the init command to set up authentication:');
-    logger.info('  diffshot init');
+    logger.info('  diffshot-ai init');
     return { success: false };
   }
 

@@ -200,8 +200,8 @@ Common Issues:
 
   if (changedFiles.length === 0) {
     logger.info('No changes detected. Try:');
-    logger.info('  diffshot --branch main');
-    logger.info('  diffshot --branch HEAD~3');
+    logger.info('  diffshot-ai --branch main');
+    logger.info('  diffshot-ai --branch HEAD~3');
     process.chdir(originalDir);
     process.exit(0);
   }

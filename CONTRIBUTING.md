@@ -15,8 +15,8 @@ Thank you for your interest in contributing to DiffShot! This document provides 
 
 1. Fork and clone the repository:
    ```bash
-   git clone https://github.com/sgasser/diffshot.git
-   cd diffshot
+   git clone https://github.com/sgasser/diffshot-ai.git
+   cd diffshot-ai
    ```
 
 2. Install dependencies:
@@ -46,14 +46,25 @@ Thank you for your interest in contributing to DiffShot! This document provides 
 ### Project Structure
 
 ```
-diffshot/
+diffshot-ai/
 ├── src/                 # TypeScript source files
-│   ├── cli.ts          # CLI entry point
-│   ├── diffshot.ts     # Main logic
-│   ├── init.ts         # Init command implementation
-│   └── formatter.ts    # Output formatting
+│   ├── commands/       # CLI commands
+│   │   ├── cli.ts      # CLI entry point
+│   │   ├── init.ts     # Init command implementation
+│   │   ├── config.ts   # Config command
+│   │   └── setup-auth.ts # Auth setup command
+│   ├── services/       # Core services
+│   │   ├── screenshot.ts # Screenshot generation
+│   │   └── index.ts    # Service orchestration
+│   ├── utils/          # Utility functions
+│   │   ├── git.ts      # Git operations
+│   │   ├── formatter.ts # Message formatting
+│   │   └── validation.ts # Configuration validation
+│   ├── config/         # Configuration constants
+│   ├── types/          # TypeScript type definitions
+│   └── scripts/        # Browser automation scripts
 ├── dist/               # Compiled JavaScript (generated)
-├── diffshot            # CLI executable
+├── diffshot-ai         # CLI executable
 └── package.json        # Project configuration
 ```
 
