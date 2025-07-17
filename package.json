@@ -1,0 +1,78 @@
+{
+  "name": "diffshot-ai",
+  "version": "0.1.0",
+  "description": "AI-powered screenshot generation that automatically captures relevant UI based on code changes",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "diffshot-ai": "diffshot-ai"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/commands/cli.ts",
+    "dev:init": "tsx src/commands/cli.ts init",
+    "dev:setup-auth": "tsx src/commands/cli.ts setup-auth",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint 'src/**/*.ts'",
+    "format": "prettier --write 'src/**/*.ts'",
+    "format:check": "prettier --check 'src/**/*.ts'",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "files": [
+    "dist",
+    "diffshot-ai",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "screenshot",
+    "visual-testing",
+    "visual-regression",
+    "ai",
+    "claude",
+    "claude-code",
+    "automation",
+    "testing",
+    "cli",
+    "git",
+    "diff",
+    "playwright"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Stefan Gasser <stefan@stefangasser.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sgasser/diffshot-ai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sgasser/diffshot-ai/issues"
+  },
+  "homepage": "https://github.com/sgasser/diffshot-ai#readme",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/claude-code": "^1.0.44",
+    "dotenv": "^16.0.0",
+    "ora": "^8.2.0",
+    "playwright": "^1.48.0"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^24.0.13",
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
+    "@vitest/ui": "^3.2.4",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

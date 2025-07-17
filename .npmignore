@@ -1,0 +1,36 @@
+# Source files
+src/
+*.ts
+
+# Configuration files
+.eslintrc.json
+.prettierrc.json
+.prettierignore
+tsconfig.json
+.env
+.env.example
+
+# Development files
+.github/
+CONTRIBUTING.md
+.diffshot/
+screenshots/
+*.log
+
+# Build artifacts
+*.tsbuildinfo
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Keep these
+!dist/
+!README.md
+!LICENSE
+!package.json
+!diffshot
