@@ -1,6 +1,6 @@
 {
   "name": "diffshot-ai",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "AI-powered screenshot generation that automatically captures relevant UI based on code changes",
   "type": "module",
   "main": "dist/index.js",
@@ -25,6 +25,8 @@
   },
   "files": [
     "dist",
+    "src/prompts",
+    "src/scripts",
     "diffshot-ai",
     "README.md",
     "LICENSE"
