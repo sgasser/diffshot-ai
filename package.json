@@ -9,7 +9,8 @@
     "diffshot-ai": "diffshot-ai"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run copy-assets",
+    "copy-assets": "cp -r src/prompts dist/ && cp -r src/scripts dist/",
     "dev": "tsx src/commands/cli.ts",
     "dev:init": "tsx src/commands/cli.ts init",
     "dev:config": "tsx src/commands/cli.ts config",
@@ -25,8 +26,6 @@
   },
   "files": [
     "dist",
-    "src/prompts",
-    "src/scripts",
     "diffshot-ai",
     "README.md",
     "LICENSE"
