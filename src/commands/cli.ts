@@ -47,13 +47,13 @@ async function runCLI(): Promise<void> {
 
   if (args.includes('--help') || args.includes('-h')) {
     console.log(`
-DiffShot-AI - Screenshot generation for code changes
+DiffShot - Screenshot generation for code changes
 
 Usage: diffshot-ai [path] [options]
        diffshot-ai <command> [path]
 
 Commands:
-  init [path]                        Initialize DiffShot-AI configuration
+  init [path]                        Initialize DiffShot configuration
   setup-auth "<credentials>" [path]  Set up authentication with provided credentials
 
 Options:
@@ -153,7 +153,7 @@ Common Issues:
 
   if (!configExists(targetDir)) {
     logger.error(`${CONFIG.FILE_NAME} not found in this directory`);
-    logger.error('Run "diffshot-ai init" first to initialize DiffShot-AI for this project');
+    logger.error('Run "diffshot-ai init" first to initialize DiffShot for this project');
     process.chdir(originalDir);
     process.exit(1);
   }

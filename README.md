@@ -90,7 +90,7 @@ export CLAUDE_CODE_OAUTH_TOKEN=sk-ant-oat...
 echo "CLAUDE_CODE_OAUTH_TOKEN=sk-ant-oat..." >> .env
 ```
 
-### 2. Initialize DiffShot-AI
+### 2. Initialize DiffShot
 
 In your web project directory:
 
@@ -173,7 +173,7 @@ diffshot-ai
 
 ### Supported Frameworks
 
-DiffShot-AI works with any web framework:
+DiffShot works with any web framework:
 
 - ✅ **React** - Next.js, Gatsby, Create React App, Vite
 - ✅ **Vue** - Nuxt, Vue CLI, Vite
@@ -184,7 +184,7 @@ DiffShot-AI works with any web framework:
 
 ## ⚙️ Configuration
 
-DiffShot-AI uses a `DIFFSHOT.md` file for configuration:
+DiffShot uses a `DIFFSHOT.md` file for configuration:
 
 ```markdown
 # DiffShot Configuration
@@ -233,7 +233,7 @@ diffshot-ai [path] [options]
 ```
 
 #### `init`
-Initialize DiffShot-AI configuration
+Initialize DiffShot configuration
 
 ```bash
 diffshot-ai init [path]

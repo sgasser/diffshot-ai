@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-DiffShot-AI is a screenshot generation tool that analyzes code changes and automatically captures relevant UI screenshots. It's a TypeScript CLI tool that uses Claude AI to understand how code changes impact the UI.
+DiffShot is a screenshot generation tool that analyzes code changes and automatically captures relevant UI screenshots. It's a TypeScript CLI tool that uses Claude AI to understand how code changes impact the UI.
 
 ## Development Commands
 
